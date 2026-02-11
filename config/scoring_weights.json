@@ -1,0 +1,25 @@
+{
+  "signals": {
+    "preferences_complete": 15.0,
+    "has_email": 5.0,
+    "has_phone": 5.0,
+    "multi_agent": 10.0,
+    "listing_view": 3.0,
+    "listing_save": 8.0,
+    "listing_share": 10.0,
+    "search_performed": 2.0,
+    "open_house_rsvp": 20.0,
+    "document_signed": 25.0,
+    "price_drop_match": 12.0,
+    "new_listing_match": 10.0,
+    "status_change_match": 8.0,
+    "back_on_market_match": 15.0,
+    "agent_note_added": 5.0,
+    "contacted_recently": 7.0
+  },
+  "decay": {
+    "rate": 0.95,
+    "reason_retention_days": 30
+  },
+  "score_cap": 1000.0
+}

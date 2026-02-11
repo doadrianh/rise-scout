@@ -1,0 +1,82 @@
+{
+  "contacts": {
+    "settings": {
+      "index": {
+        "knn": true
+      }
+    },
+    "mappings": {
+      "properties": {
+        "contact_id": { "type": "keyword" },
+        "user_ids": { "type": "keyword" },
+        "organisationalunit_id": { "type": "keyword" },
+        "mls_ids": { "type": "keyword" },
+        "first_name": { "type": "text" },
+        "last_name": { "type": "text" },
+        "email": { "type": "keyword" },
+        "phone": { "type": "keyword" },
+        "preferences": {
+          "properties": {
+            "price_min": { "type": "float" },
+            "price_max": { "type": "float" },
+            "beds_min": { "type": "integer" },
+            "beds_max": { "type": "integer" },
+            "baths_min": { "type": "integer" },
+            "baths_max": { "type": "integer" },
+            "sqft_min": { "type": "integer" },
+            "sqft_max": { "type": "integer" },
+            "property_types": { "type": "keyword" },
+            "zip_codes": { "type": "keyword" },
+            "cities": { "type": "keyword" },
+            "keywords": { "type": "text" }
+          }
+        },
+        "watched_listings": { "type": "keyword" },
+        "score": { "type": "float" },
+        "score_reasons": {
+          "type": "nested",
+          "properties": {
+            "signal": { "type": "keyword" },
+            "points": { "type": "float" },
+            "category": { "type": "keyword" },
+            "detail": { "type": "text" },
+            "timestamp": { "type": "date" }
+          }
+        },
+        "embedding_vector": {
+          "type": "knn_vector",
+          "dimension": 1024,
+          "method": {
+            "name": "hnsw",
+            "space_type": "cosinesimil",
+            "engine": "nmslib",
+            "parameters": {
+              "ef_construction": 128,
+              "m": 24
+            }
+          }
+        },
+        "last_interaction_at": { "type": "date" },
+        "updated_at": { "type": "date" }
+      }
+    }
+  },
+  "listings": {
+    "mappings": {
+      "properties": {
+        "listing_id": { "type": "keyword" },
+        "mls_id": { "type": "keyword" },
+        "status": { "type": "keyword" },
+        "price": { "type": "float" },
+        "beds": { "type": "integer" },
+        "baths": { "type": "integer" },
+        "sqft": { "type": "integer" },
+        "property_type": { "type": "keyword" },
+        "zip_code": { "type": "keyword" },
+        "city": { "type": "keyword" },
+        "location": { "type": "geo_point" },
+        "updated_at": { "type": "date" }
+      }
+    }
+  }
+}
